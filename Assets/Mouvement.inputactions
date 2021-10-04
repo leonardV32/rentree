@@ -1,0 +1,77 @@
+{
+    "name": "Mouvement",
+    "maps": [
+        {
+            "name": "Mvmt",
+            "id": "e1a9e21a-8d97-4424-8f73-d7f48220fd76",
+            "actions": [
+                {
+                    "name": "directionelle",
+                    "type": "Value",
+                    "id": "1941aac9-c41f-43df-b321-9b7617e4c42d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "12401eb3-ab9b-4c6c-abad-d25dcbdac09a",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "directionelle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "5210c18f-59b5-4f3f-8742-13e53432d5fb",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "directionelle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "931f8d09-d924-4aa7-ad53-824d4e8d1661",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "directionelle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "5fd89624-55c8-4a86-a7ca-f015c8698346",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "directionelle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "144c99ee-7a7e-41d6-934c-ef1f64c50479",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "directionelle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
