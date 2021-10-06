@@ -9,11 +9,15 @@ public class Enemy_Spawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for(int i = 1; i < 5; i++)
+        {
+            Spawn();
+        }
         //sprite_enemies = new GameObject[]; pas besoin de cette ligne puique les arrays seront remplis en SerializeField
         //spawn_enemies = new GameObject[]; pas besoin de cette ligne puique les arrays seront remplis en SerializeField
     }
 
-    void Spawn()
+    public void Spawn()
     {
         var enemy = PickEnemy();
         var spawner = PickSpawn();
@@ -22,16 +26,16 @@ public class Enemy_Spawn : MonoBehaviour
 
     public GameObject PickEnemy()
     {
-        return enemies[Random.Range (0, enemies.Length - 1)];
+        return enemies[Random.Range (0, enemies.Length)];
     }
 
     public GameObject PickSpawn()
     {
-        return spawners[Random.Range (0,spawners.Length - 1)];
+        return spawners[Random.Range (0,spawners.Length)];
     }
     // Update is called once per frame
     void Update()
     {
-        Spawn();
+        
     }
 }
