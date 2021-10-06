@@ -9,7 +9,7 @@ public class Mouvement_Avatar : MonoBehaviour
     [SerializeField] private float maxSpeed;
     private Rigidbody2D rgdb2;
     private SpriteRenderer spriteRenderer;
-    private float direction;
+    private Vector2 direction;
     private Animator animator;
     
     private Mouvement controls;
@@ -28,12 +28,12 @@ public class Mouvement_Avatar : MonoBehaviour
 
     private void MoveOnPerformed(InputAction.CallbackContext obj)
     {
-        direction = obj.ReadValue<float>();
+        direction = obj.ReadValue<Vector2>();
     }
 
     private void MoveOnCanceled(InputAction.CallbackContext obj)
     {
-        direction = 0;
+        direction = Vector2.zero;
     }
 
     // Start is called before the first frame update
@@ -50,6 +50,7 @@ public class Mouvement_Avatar : MonoBehaviour
     {
         var horizontalSpeed = Mathf.Abs(rgdb2.velocity.x);
         var verticalSpeed = Mathf.Abs(rgdb2.velocity.y);
+        // (horizontaspeed, verticalspeed
     }
 
 
@@ -58,13 +59,16 @@ public class Mouvement_Avatar : MonoBehaviour
         var horizontalSpeed = Mathf.Abs(rgdb2.velocity.x);
         if (horizontalSpeed < maxSpeed)
         {
-            rgdb2.AddForce(new Vector2(speed * direction, 0));
+            rgdb2.AddForce(speed * direction);
         }
 
         var verticalSpeed = Mathf.Abs(rgdb2.velocity.y);
         if (verticalSpeed < maxSpeed)
         {
-            rgdb2.AddForce(new Vector2(0, speed * direction));
+            rgdb2.AddForce(speed * direction);
         }
+
+        
     }
+
 }

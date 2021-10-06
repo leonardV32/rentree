@@ -22,7 +22,7 @@ public class @Mouvement : IInputActionCollection, IDisposable
                     ""name"": ""directionelle"",
                     ""type"": ""Value"",
                     ""id"": ""1941aac9-c41f-43df-b321-9b7617e4c42d"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
