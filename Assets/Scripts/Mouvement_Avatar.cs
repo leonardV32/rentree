@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Mouvement_Avatar : MonoBehaviour
-{               // VARIABLES UNITY //
+{                     // VARIABLES UNITY //
     [SerializeField] private float speed;
     [SerializeField] private float maxSpeed;
     private Rigidbody2D rgdb2;
@@ -19,21 +19,21 @@ public class Mouvement_Avatar : MonoBehaviour
         controls.Enable();
 
                     // PERFORMED //
-        controls.Mvmt.directionnelle.performed += MoveOnPerformed;
+        controls.Mvmt.directionelle.performed += MoveOnPerformed;
 
                     // CANCELED //
-        controls.Mvmt.directionnelle.canceled += MoveOnCanceled;
+        controls.Mvmt.directionelle.canceled += MoveOnCanceled;
    
     }
 
     private void MoveOnPerformed(InputAction.CallbackContext obj)
     {
-        direction = object.ReadValue<float>();
+        direction = obj.ReadValue<float>();
     }
 
-    private void MoveOnCanceled(Input.CallbackContext obj)
+    private void MoveOnCanceled(InputAction.CallbackContext obj)
     {
-        direction = 0
+        direction = 0;
     }
 
     // Start is called before the first frame update
@@ -41,7 +41,7 @@ public class Mouvement_Avatar : MonoBehaviour
     {
         rgdb2 = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<animator>();
+        animator = GetComponent<Animator>();
     }
 
 
