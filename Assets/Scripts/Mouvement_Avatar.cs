@@ -17,27 +17,39 @@ public class Mouvement_Avatar : MonoBehaviour
     {
         controls = new Mouvement();
         controls.Enable();
+
                     // PERFORMED //
-
-
         controls.Mvmt.directionnelle.performed += MoveOnPerformed;
 
-        // CANCELED //
-
+                    // CANCELED //
         controls.Mvmt.directionnelle.canceled += MoveOnCanceled;
-
-        
+   
     }
+
+    private void MoveOnPerformed(InputAction.CallbackContext obj)
+    {
+        direction = object.ReadValue<float>();
+    }
+
+    private void MoveOnCanceled(Input.CallbackContext obj)
+    {
+        direction = 0
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rgdb2 = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<animator>();
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        var horizontalSpeed = Mathf.Abs(rgdb2.velocity.x);
+        var verticalSpeed = Mathf.Abs(rgdb2.velocity.y);
     }
 
 
