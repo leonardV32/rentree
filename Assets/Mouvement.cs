@@ -84,6 +84,33 @@ public class @Mouvement : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Attack"",
+            ""id"": ""8bab9722-1b78-4331-9697-a375fce213b7"",
+            ""actions"": [
+                {
+                    ""name"": ""Fulgurance"",
+                    ""type"": ""Value"",
+                    ""id"": ""427f1a44-9cbe-40f8-a053-422bd2187c9e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""66542d82-44ad-4738-ad9e-140a734637a7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fulgurance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -91,6 +118,9 @@ public class @Mouvement : IInputActionCollection, IDisposable
         // Mvmt
         m_Mvmt = asset.FindActionMap("Mvmt", throwIfNotFound: true);
         m_Mvmt_directionelle = m_Mvmt.FindAction("directionelle", throwIfNotFound: true);
+        // Attack
+        m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
+        m_Attack_Fulgurance = m_Attack.FindAction("Fulgurance", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -169,8 +199,45 @@ public class @Mouvement : IInputActionCollection, IDisposable
         }
     }
     public MvmtActions @Mvmt => new MvmtActions(this);
+
+    // Attack
+    private readonly InputActionMap m_Attack;
+    private IAttackActions m_AttackActionsCallbackInterface;
+    private readonly InputAction m_Attack_Fulgurance;
+    public struct AttackActions
+    {
+        private @Mouvement m_Wrapper;
+        public AttackActions(@Mouvement wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Fulgurance => m_Wrapper.m_Attack_Fulgurance;
+        public InputActionMap Get() { return m_Wrapper.m_Attack; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AttackActions set) { return set.Get(); }
+        public void SetCallbacks(IAttackActions instance)
+        {
+            if (m_Wrapper.m_AttackActionsCallbackInterface != null)
+            {
+                @Fulgurance.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnFulgurance;
+                @Fulgurance.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnFulgurance;
+                @Fulgurance.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnFulgurance;
+            }
+            m_Wrapper.m_AttackActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Fulgurance.started += instance.OnFulgurance;
+                @Fulgurance.performed += instance.OnFulgurance;
+                @Fulgurance.canceled += instance.OnFulgurance;
+            }
+        }
+    }
+    public AttackActions @Attack => new AttackActions(this);
     public interface IMvmtActions
     {
         void OnDirectionelle(InputAction.CallbackContext context);
+    }
+    public interface IAttackActions
+    {
+        void OnFulgurance(InputAction.CallbackContext context);
     }
 }
