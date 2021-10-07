@@ -1,0 +1,33 @@
+{
+    "name": "fulgurance",
+    "maps": [
+        {
+            "name": "Attack",
+            "id": "90b3b63a-05b7-4297-a869-d6960eab3c05",
+            "actions": [
+                {
+                    "name": "Sword",
+                    "type": "Button",
+                    "id": "76e4527b-fb2f-4174-8042-25a69b86d21f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8edb353b-77a8-4f28-bc17-094ca2db6643",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
