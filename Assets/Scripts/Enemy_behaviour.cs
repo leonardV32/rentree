@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class Enemy_behaviour : MonoBehaviour
 {
-    public Transform target; // remplacer par l'avatar/player
+    private Transform target;
+    public GameObject player; // remplacer par l'avatar/player
+    public float speed = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Target");
+        target = player.transform;
+        float step = speed* Time.deltaTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, target.position, 0.1f); // ici target.position deviendra Player.position
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.position, step); // ici target.position deviendra Player.position
+        
     }
 }
