@@ -12,6 +12,11 @@ public class Mouvement_Avatar : MonoBehaviour
     private Vector2 direction;
     private Animator animator;
 
+    private GameObject attack_colliderup;
+    private GameObject attack_colliderdown;
+    private GameObject attack_colliderright;
+    private GameObject attack_colliderleft;
+
     private bool can_move = false;
     private bool Slice;
     
@@ -39,8 +44,8 @@ public class Mouvement_Avatar : MonoBehaviour
     private void MoveOnPerformed(InputAction.CallbackContext obj)
     {
         direction = obj.ReadValue<Vector2>();
-        animator.SetBool("moving_ok", true);
-        animator.SetFloat("horizontal", direction.x);
+        animator.SetBool("moving_ok", true); // déclenche la transition de idle à walk dans l'animator  
+        animator.SetFloat("horizontal", direction.x);   
         animator.SetFloat("vertical", direction.y);
 
     }
@@ -50,15 +55,27 @@ public class Mouvement_Avatar : MonoBehaviour
     {
         animator.SetBool("attack_ok", true);
 
-        /*if animator.GetFloat("horizontal") > 0;
-            animator.
-        if animator.horizontal < 0
-            attack down;
-        if direction.y > 0
-            attack ;
-        if direction.y < 0
-            attack down;
-        */
+        if (animator.GetFloat("vertical") > 0)
+        {
+            attack_colliderup.SetActive(true);  //up
+        }
+
+        else if (animator.GetFloat("vertical") < 0)
+        {
+            attack_colliderdown.SetActive(true);    //down
+        }
+       
+        else if (animator.GetFloat("horizontal") > 0)
+        {
+            attack_colliderright.SetActive(true);   //right
+           
+        }
+           
+        else //(animator.GetFloat("horizontal") < 0)
+        {
+            attack_colliderleft.SetActive(true);    //left
+        }
+            
 
     }
 
@@ -70,9 +87,13 @@ public class Mouvement_Avatar : MonoBehaviour
     private void AttackOnCanceled(InputAction.CallbackContext obj)
     {
         animator.SetBool("attack_ok", false);
+        attack_colliderup.SetActive(false);  
+        attack_colliderdown.SetActive(false);
+        attack_colliderright.SetActive(false);
+        attack_colliderleft.SetActive(false);
     }
 
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +102,16 @@ public class Mouvement_Avatar : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         can_move = true;
+
+        attack_colliderup = this.gameObject.transform.GetChild(0).gameObject;
+        attack_colliderdown = this.gameObject.transform.GetChild(1).gameObject;
+        attack_colliderright = this.gameObject.transform.GetChild(2).gameObject;
+        attack_colliderleft = this.gameObject.transform.GetChild(3).gameObject;
+
+        attack_colliderup.SetActive(false);  
+        attack_colliderdown.SetActive(false);
+        attack_colliderright.SetActive(false);
+        attack_colliderleft.SetActive(false);
     }
     void EnableController()
     {

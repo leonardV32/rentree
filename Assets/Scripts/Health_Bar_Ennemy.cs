@@ -7,7 +7,7 @@ public class Health_Bar_Ennemy : MonoBehaviour
 
     public int maxHealthEnnemy = 100;
     public int currentHealthEnnemy;
-
+    
 
     // Start is called before the first frame update
     void Start()
