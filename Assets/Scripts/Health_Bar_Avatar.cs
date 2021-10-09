@@ -5,9 +5,10 @@ using UnityEngine;
 public class Health_Bar_Avatar : MonoBehaviour
 {
 
-    public int maxHealth = 100;
-    public int currentHealth;
-    
+    public int damage;
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -19,9 +20,22 @@ public class Health_Bar_Avatar : MonoBehaviour
         
     }
 
-    /*void DamageTaken(int damage)
-    {
-        currentHealth -= damage;
+    void OnTriggerEnter2D(Collider2D col)
+    {   
+        if (col.gameObject.tag == "Enemy")
+            DamageTaken();
     }
-    */
+    void DamageTaken()
+    {
+        if (currentHealth > 0)
+        {
+            currentHealth -= damage;
+        }
+
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
 }
