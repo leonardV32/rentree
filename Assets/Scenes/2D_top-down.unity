@@ -15709,4 +15709,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  maxHealth: 10
+  maxHealth: 100
