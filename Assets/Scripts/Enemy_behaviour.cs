@@ -5,8 +5,8 @@ using UnityEngine;
 public class Enemy_behaviour : MonoBehaviour
 {
     private Transform target;
-    public GameObject player; // remplacer par l'avatar/player
-    public float speed = 2.0f;
+    private GameObject player; // remplacer par l'avatar/player
+    private float speed = 2.0f;
     // Start is called before the first frame update
     void Start()
     {
