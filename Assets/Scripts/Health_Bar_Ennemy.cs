@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Health_Bar_Ennemy : MonoBehaviour
 {
-
-    public int maxHealthEnnemy = 100;
-    public int currentHealthEnnemy;
+    public int damage;
+    [SerializeField] private int maxHealthEnnemy;
+    private int currentHealthEnnemy;
     
 
     // Start is called before the first frame update
@@ -21,25 +21,21 @@ public class Health_Bar_Ennemy : MonoBehaviour
         
     }
 
-    void DamageTaken(int damage)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        currentHealthEnnemy -= damage;
+        DamageTaken();
     }
 
-    /*void DamageTaken(int damage)
+    void DamageTaken()
     {
         if (currentHealthEnnemy > 0)
         {
-            currentHealthEnnemy -= bullet_Damage
+            currentHealthEnnemy -= damage;
         }
-        
+
         else
-            Destroy(this.gameObject)
-
-
+            Destroy(this.gameObject);
     }
 
-    */
-
-
+  
 }
