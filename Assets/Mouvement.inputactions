@@ -9,7 +9,7 @@
                     "name": "directionelle",
                     "type": "Value",
                     "id": "1941aac9-c41f-43df-b321-9b7617e4c42d",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -69,6 +69,33 @@
                     "action": "directionelle",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Attack",
+            "id": "8bab9722-1b78-4331-9697-a375fce213b7",
+            "actions": [
+                {
+                    "name": "Fulgurance",
+                    "type": "Value",
+                    "id": "427f1a44-9cbe-40f8-a053-422bd2187c9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "66542d82-44ad-4738-ad9e-140a734637a7",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fulgurance",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
