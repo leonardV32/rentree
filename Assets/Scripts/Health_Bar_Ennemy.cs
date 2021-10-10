@@ -29,7 +29,7 @@ public class Health_Bar_Ennemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {   
-        if (col.gameObject.tag == "Sword")
+        if (col.gameObject.tag == "Sword" /*&& col.gameObject.tag != "Target"*/)
             DamageTaken();
     }
 
@@ -38,6 +38,7 @@ public class Health_Bar_Ennemy : MonoBehaviour
         if (currentHealthEnnemy > 0)
         {
             currentHealthEnnemy -= damage;
+            Debug.Log(currentHealthEnnemy);
         }
 
         else

@@ -20,9 +20,9 @@ public class Health_Bar_Avatar : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D collision)
     {   
-        if (col.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" /*&& col.gameObject.tag !="Sword"*/)
             DamageTaken();
     }
     void DamageTaken()
@@ -30,6 +30,7 @@ public class Health_Bar_Avatar : MonoBehaviour
         if (currentHealth > 0)
         {
             currentHealth -= damage;
+            Debug.Log(currentHealth);
         }
 
         else
